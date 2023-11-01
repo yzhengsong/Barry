@@ -1,0 +1,24 @@
+#!/bin/bash -l
+#SBATCH -J {name}
+#SBATCH -p {account}
+#SBATCH --array=1-{num_tasks}%{num_concurrent}
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --nodes=1
+#SBATCH --mem=8GB
+#SBATCH -t 24:00:00
+#SBATCH -o {output_dir}/{name}.o%j
+
+IDIR={directory}
+conda deactivate
+conda activate {conda_env}
+echo $PATH
+echo "Activated python"
+executable=$(which python)
+echo $executable
+
+PROG={executable}
+PARAMS=`expr ${{SLURM_ARRAY_TASK_ID}} - 1`
+cd $IDIR
+sleep $((RANDOM % 5))
+time $executable $PROG $PARAMS

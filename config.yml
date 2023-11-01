@@ -3,25 +3,25 @@ hpc_submit_command: sbatch
 
 # Determine job run time and resources
 hpcs:
-  getafix:
-    account: smp
-    conda_env: Barry
-    job_script_name: getafix
+  bessemer:
+    account: sheffield
+    conda_env: env3
+    job_script_name: barry
     num_fits_per_job: 1
-    mpi_module: openmpi3_eth/3.0.0
-    fort_compile_module: gnu/7.2.0
-    num_concurrent: 200
+    mpi_module: OpenMPI/4.0.3-GCC-9.3.0
+    fort_compile_module: GCC/9.3.0
+    num_concurrent: 4
 
-  cori:
-    account: desi
-    job_script_name: cori
-    num_fits_per_job: 32
-    mpi_module: cray-mpich/7.7.19
-    fort_compile_module: gcc
+#  cori:
+#    account: desi
+#    job_script_name: cori
+#    num_fits_per_job: 32
+#    mpi_module: cray-mpich/7.7.19
+#    fort_compile_module: gcc
 
-  perlmutter:
-    account: desi
-    job_script_name: perlmutter
-    num_fits_per_job: 32
-    mpi_module: cray-mpich/7.7.19
-    fort_compile_module: gcc
+#  perlmutter:
+#    account: desi
+#    job_script_name: perlmutter
+#    num_fits_per_job: 32
+#    mpi_module: cray-mpich/7.7.19
+#    fort_compile_module: gcc
